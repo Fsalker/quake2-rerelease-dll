@@ -1077,6 +1077,10 @@ SAVE_STRUCT_START
 	FIELD_AUTO(item),
 	FIELD_AUTO(crosslevel_flags),
 
+	FIELD_AUTO(proPoints),
+	FIELD_AUTO(proFlags),
+	FIELD_AUTO(proMarkerIndex),
+
 	// moveinfo_t
 	FIELD_AUTO(moveinfo.start_origin),
 	FIELD_AUTO(moveinfo.start_angles),

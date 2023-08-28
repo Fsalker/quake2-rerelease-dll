@@ -3147,6 +3147,9 @@ struct edict_t
 	uint32_t crosslevel_flags;
 	// NOTE: if adding new elements, make sure to add them
 	// in g_save.cpp too!
+    int proPoints;
+    int proFlags;
+	int proMarkerIndex;
 };
 
 //=============
@@ -3499,3 +3502,5 @@ inline void pierce_args_t::restore()
 
 	num_pierced = 0;
 }
+
+#include "prownage.h"

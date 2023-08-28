@@ -1306,6 +1306,8 @@ bool monster_start(edict_t *self)
 	// [Paril-KEX] co-op health scale
 	G_Monster_ScaleCoopHealth(self);
 
+	assignMonsterProPoints(self);
+
 	return true;
 }
 
