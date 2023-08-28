@@ -2392,6 +2392,7 @@ char *WriteLevelJson(bool transition, size_t *out_size)
 // not store or modify it.
 void ReadLevelJson(const char *jsonString)
 {
+	G_LoadShadowLights();
 	// free any dynamic memory allocated by loading the level
 	// base state
 	gi.FreeTags(TAG_LEVEL);

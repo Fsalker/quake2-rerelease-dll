@@ -516,6 +516,57 @@ struct shadow_light_info_t
 
 static shadow_light_info_t shadowlightinfo[MAX_SHADOW_LIGHTS];
 
+// fix an oversight in shadow light code that causes
+// lights to be ordered wrong on return levels
+// if the spawn functions are changed.
+// this will work without changing the save/load code.
+void G_LoadShadowLights()
+{
+	for (size_t i = 0; i < level.shadow_light_count; i++)
+	{
+		const char* cstr = gi.get_configstring(CS_SHADOWLIGHTS + i);
+		const char* token = COM_ParseEx(&cstr, ";");
+
+		if (token && *token)
+		{
+			shadowlightinfo[i].entity_number = atoi(token);
+
+			token = COM_ParseEx(&cstr, ";");
+			shadowlightinfo[i].shadowlight.lighttype = (shadow_light_type_t)atoi(token);
+
+			token = COM_ParseEx(&cstr, ";");
+			shadowlightinfo[i].shadowlight.radius = atof(token);
+
+			token = COM_ParseEx(&cstr, ";");
+			shadowlightinfo[i].shadowlight.resolution = atoi(token);
+
+			token = COM_ParseEx(&cstr, ";");
+			shadowlightinfo[i].shadowlight.intensity = atof(token);
+
+			token = COM_ParseEx(&cstr, ";");
+			shadowlightinfo[i].shadowlight.fade_start = atof(token);
+
+			token = COM_ParseEx(&cstr, ";");
+			shadowlightinfo[i].shadowlight.fade_end = atof(token);
+
+			token = COM_ParseEx(&cstr, ";");
+			shadowlightinfo[i].shadowlight.lightstyle = atoi(token);
+
+			token = COM_ParseEx(&cstr, ";");
+			shadowlightinfo[i].shadowlight.coneangle = atof(token);
+
+			token = COM_ParseEx(&cstr, ";");
+			shadowlightinfo[i].shadowlight.conedirection[0] = atof(token);
+
+			token = COM_ParseEx(&cstr, ";");
+			shadowlightinfo[i].shadowlight.conedirection[1] = atof(token);
+
+			token = COM_ParseEx(&cstr, ";");
+			shadowlightinfo[i].shadowlight.conedirection[2] = atof(token);
+		}
+	}
+}
+
 const shadow_light_data_t *GetShadowLightData(int32_t entity_number)
 {
 	for (int32_t i = 0; i < level.shadow_light_count; i++)

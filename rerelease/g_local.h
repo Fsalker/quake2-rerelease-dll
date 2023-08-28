@@ -1256,6 +1256,7 @@ struct shadow_light_temp_t
 	shadow_light_data_t data;
 	const char	*lightstyletarget = nullptr;
 };
+void G_LoadShadowLights();
 
 #include <unordered_set>
 
