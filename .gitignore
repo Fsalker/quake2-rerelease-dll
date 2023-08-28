@@ -1,0 +1,13 @@
+rerelease/.vs/game
+rerelease/CMake
+rerelease/cmake-build-debug
+rerelease/vcpkg_installed
+rerelease/x64
+rerelease/build
+
+rerelease/CMakeLists.txt
+
+rerelease/game.aps
+rerelease/game.rc
+rerelease/game.vcxproj.user
+rerelease/resource.h
